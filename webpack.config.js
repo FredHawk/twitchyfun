@@ -1,7 +1,11 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// import HtmlWebpackPlugin from 'html-webpack-plugin';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const path = require('path');
+// import path from 'path';
 
 module.exports = {
   //context: path.resolve(__dirname, 'src'),
@@ -16,10 +20,22 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/, 
+        test: /\.css$/, 
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
+          use: [{
+            loader: 'css-loader',
+            options: { sourceMap: true, importLoaders: 1}
+          }, { 
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              plugins: () => [
+                require('postcss-import')({}),
+                require('postcss-cssnext')({ browsers: ['last 2 versions', '> 5%'] }),
+              ],
+            }
+          }],
           publicPath: '/dist'
         })
       }

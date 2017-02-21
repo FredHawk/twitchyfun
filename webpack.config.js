@@ -1,14 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
 const path = require('path');
-// import path from 'path';
 
 module.exports = {
-  //context: path.resolve(__dirname, 'src'),
   entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, './dist'),

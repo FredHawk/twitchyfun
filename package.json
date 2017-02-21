@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "prod": "webpack -p",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server -d"
   },
   "author": "Fred Hawk",
   "license": "ISC"

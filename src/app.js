@@ -6,12 +6,17 @@ function getData (url) {
   let result = [];
   fetch(url)
     .then(response => response.json())
-    .then(data => result.push(data));
+    .then(data => {
+      // if (url.includes('streams')) {
+      //   return result.push({'stream': data.stream, 'links': data._links});
+      // }
+      return result.push(data)
+    });
   
   return result;
 }
 
-function getStreamStatus(channel) {
+function getStream(channel) {
   const urlStreams = `https://wind-bow.gomix.me/twitch-api/streams/${channel}`;
 
   const data = getData(urlStreams)
@@ -25,8 +30,15 @@ function getChannels(channel) {
   return data;
 }
 
-const streamStatus = channels.map(getStreamStatus);
+// function getOffline(streamData) {
+//   if (streamData.)
+// }
+
+const streamData = channels.map(getStream);
 const channelData = channels.map(getChannels);
 
-console.log(streamStatus);
+// const offlineStreams = streamData.filter(streamData => streamData.Object.stream === null);
+
+console.log(streamData);
 console.log(channelData);
+// console.log(offlineStreams);

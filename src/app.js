@@ -2,48 +2,46 @@ import css from './style.css';
 
 const channels = ["brunofin", "comster404", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
+function getURL(type, channel) {
+  const baseURL = `https://wind-bow.gomix.me/twitch-api`;
+  return `${baseURL}/${type}/${channel}`;
+}
+
 function getData (type, channel) {
-  const url = `https://wind-bow.gomix.me/twitch-api/${type}/${channel}`;
-  let result = [];
-  let test = [];
-  fetch(url)
+  // get streams data
+  const streams = getURL(type, channel);
+  fetch(streams)
     .then(response => response.json())
     .then(data => {
-      // console.log(data);
-      // const channelData = test.push(data);
-      // console.log(channelData);
-
-      if (url.includes('streams')) {
-        if (data.stream != null) {
-          // const channelData = data.keys(channel => {
-          //   getData('channels', channel)
-          // });
-          // console.log(data);
-          let temp = result.push({'stream': data.stream, 'links': data._links});
-          // console.log(temp);
-          return temp;
-        }
+      
+      if (data.stream != null) {
+        console.log(data.stream.channel.name);
+      } else {
+        console.log('Streamdata: ', data.stream);
       }
-      return result.push(data);
+      // get channels data
+      const chans = getURL('channels', channel);
+      fetch(chans)
+      .then(response => response.json())
+      .then(data => console.log('Channeldata: ', data))
+      .catch(err => console.error(err));
     })
-    .catch(error => console.error(error));
-  // console.log(result);
-  return result;
+    .catch(err => console.error(err));
 }
 
-function getStream(channel) {
-  // const urlStreams = `https://wind-bow.gomix.me/twitch-api/streams/${channel}`;
+// function getStream(channel) {
+//   // const urlStreams = `https://wind-bow.gomix.me/twitch-api/streams/${channel}`;
 
-  const data = getData('streams', channel)
-  return data;
-}
+//   const data = getData('streams', channel)
+//   return data;
+// }
 
-function getChannels(channel) {
-  const urlChannels = `https://wind-bow.gomix.me/twitch-api/channels/${channel}`;
+// function getChannels(channel) {
+//   const urlChannels = `https://wind-bow.gomix.me/twitch-api/channels/${channel}`;
 
-  const data = getData(urlChannels)
-  return data;
-}
+//   const data = getData(urlChannels)
+//   return data;
+// }
 
 // function getOffline(streamData) {
 //   if (streamData.)
@@ -52,12 +50,10 @@ function getChannels(channel) {
 // const streamData = channels.map(channel => {
 //   return getData('streams', channel)
 // });
-const chanData = channels.map(channel => {
-  return getData('channels', channel)
-});
+channels.map(channel => getData('streams', channel));
 
 // const offlineStreams = streamData.filter(streamData => streamData.Object.stream === null);
 
 // console.log(streamData);
 // console.log(channelData);
-console.log(chanData[5]);
+// console.log(chanData[5]);

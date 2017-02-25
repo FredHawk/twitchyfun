@@ -28,32 +28,4 @@ function getData (type, channel) {
     })
     .catch(err => console.error(err));
 }
-
-// function getStream(channel) {
-//   // const urlStreams = `https://wind-bow.gomix.me/twitch-api/streams/${channel}`;
-
-//   const data = getData('streams', channel)
-//   return data;
-// }
-
-// function getChannels(channel) {
-//   const urlChannels = `https://wind-bow.gomix.me/twitch-api/channels/${channel}`;
-
-//   const data = getData(urlChannels)
-//   return data;
-// }
-
-// function getOffline(streamData) {
-//   if (streamData.)
-// }
-
-// const streamData = channels.map(channel => {
-//   return getData('streams', channel)
-// });
 channels.map(channel => getData('streams', channel));
-
-// const offlineStreams = streamData.filter(streamData => streamData.Object.stream === null);
-
-// console.log(streamData);
-// console.log(channelData);
-// console.log(chanData[5]);

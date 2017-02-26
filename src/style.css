@@ -26,11 +26,12 @@ h1 {
   margin: 0 auto;
 }
 .btn {
-  width: 6rem;
+  width: 6.2rem;
   padding: 0.5rem;
   background: var(--color-brightGreen);
   border: 2px solid color(var(--color-brightGreen) blackness(15%));
   border-radius: 1px;
+  font-size: 0.9rem;
 }
 .btn__active {
   color: var(--color-brightGreen);

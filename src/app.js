@@ -21,6 +21,7 @@ function getData (type, channel, status) {
       if (status == 'online') {
         if (data.stream != null) {
           // Show online channels
+          const streamStatus = data.stream != null ? 'Online' : 'Offline';
           const chans = getURL('channels', channel);
           fetch(chans)
           .then(response => response.json())
@@ -43,6 +44,7 @@ function getData (type, channel, status) {
       } else if(status == 'offline') {
         if (data.stream == null) {
         // Show offline channels
+        const streamStatus = data.stream != null ? 'Online' : 'Offline';
         const chans = getURL('channels', channel);
         fetch(chans)
         .then(response => response.json())

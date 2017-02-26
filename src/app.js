@@ -58,19 +58,23 @@ function getData (type, channel, status) {
         }
       } else {
         // show all channels
+        const streamStatus = data.stream != null ? 'Online' : 'Offline';
         const chans = getURL('channels', channel);
         fetch(chans)
         .then(response => response.json())
         .then(data => {
-            const channelName = data.display_name ? data.display_name : channel;
-            const channelLogo = data.logo ? data.logo : channel
-            const html = `
-              <li class="result">
-                <img src="${channelLogo}" />
-                <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
-                <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
-              </li>`;
-            resultList.innerHTML = resultList.innerHTML + html;
+          const channelName = data.display_name ? data.display_name : channel;
+          const channelLogo = data.logo ? data.logo : channel;
+          const html = `
+            <li class="result">
+              <img src="${channelLogo}" />
+              <div>
+              <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
+              <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
+              <p>Status: ${streamStatus}</p>
+              <div>
+            </li>`;
+          resultList.innerHTML = resultList.innerHTML + html;
         })
         .catch(err => console.error(err));
       }

@@ -6,3 +6,12 @@
 body {
   background: color(var(--color-blue) alpha(0.2));
 }
+.result {
+  display: flex;
+}
+
+.result img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+}

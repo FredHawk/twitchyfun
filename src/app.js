@@ -85,11 +85,29 @@ function getData (type, channel, status) {
 function getInfo(status) {
   let streamStatus = status;
   resultList.innerHTML = '';
-  channels.map((channel, status ) => getData('streams', channel, streamStatus));
+  channels.map((channel, status ) => getData('streams', channel, streamStatus)); 
+}
+function allActive() {
+  this.classList.add("btn__active");
+  onlineButton.classList.remove("btn__active");
+  offlineButton.classList.remove("btn__active");
+}
+function onlineActive() {
+  this.classList.add("btn__active");
+  allButton.classList.remove("btn__active");
+  offlineButton.classList.remove("btn__active");
+}
+function offlineActive() {
+  this.classList.add("btn__active");
+  allButton.classList.remove("btn__active");
+  onlineButton.classList.remove("btn__active");
 }
 
 onlineButton.addEventListener('click', () => getInfo('online'));
 offlineButton.addEventListener('click', () => getInfo('offline'));
 allButton.addEventListener('click', () => getInfo('all'));
+onlineButton.addEventListener('click', onlineActive);
+offlineButton.addEventListener('click', offlineActive);
+allButton.addEventListener('click', allActive);
 
 window.onload = () => getInfo('all');

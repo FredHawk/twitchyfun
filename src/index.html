@@ -6,11 +6,13 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <h1>Twitchy App</h1>
-  <p class="tagline">Check if your favorite streamers are online or not!</p>
-  <button class="btn btn__all">Show all</button>
-  <button class="btn btn__online">Show online</button>
-  <button class="btn btn__offline">Show offline</button>
+  <h1>Twitchy Streamers</h1>
+  <p class="tagline">Check if your favorite streamers are online!</p>
+  <div class="container">
+    <button class="btn btn__all btn__active">Show all</button>
+    <button class="btn btn__online">Show online</button>
+    <button class="btn btn__offline">Show offline</button>
+  </div>
   <ul class="results">
   </ul>
 </body>

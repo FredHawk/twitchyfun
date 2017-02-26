@@ -2,13 +2,49 @@
   --color-background: #4CA68B;
   --color-darkerGreen: #1D3D31;
   --color-offlineRed: #FF3633;
+  --color-coolBlue: #20425C;
+  --color-brightGreen: #6FF2CB;
 }
 
 body {
   background: color(var(--color-background));
 }
+h1 {
+  text-transform: uppercase;
+  color: var(--color-coolBlue);
+  text-align: center;
+}
+.tagline {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-brightGreen);
+}
+.container {
+  max-width: 900px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.btn {
+  width: 6rem;
+  padding: 0.5rem;
+  background: var(--color-brightGreen);
+  border: 2px solid color(var(--color-brightGreen) blackness(15%));
+  border-radius: 1px;
+}
+.btn__active {
+  color: var(--color-brightGreen);
+  background: var(--color-coolBlue);
+  border: 2px solid color(var(--color-coolBlue) blackness(50%));
+}
+
 .results {
   padding: 0;
+  @media (min-width: 800px) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
 }
 .result {
   display: flex;
@@ -16,6 +52,11 @@ body {
   padding-bottom: 1rem;
   list-style: none;
   margin-bottom: 0.5rem;
+  @media (min-width: 800px) {
+    flex: 45%;
+    max-width: 400px;
+    margin-left: 0.5rem;
+  }
 }
 
 .results li:nth-child(odd) {

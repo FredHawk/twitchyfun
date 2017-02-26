@@ -69,9 +69,9 @@ function getData (type, channel, status) {
             <li class="result">
               <img src="${channelLogo}" />
               <div>
-              <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
-              <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
-              <p>Status: ${streamStatus}</p>
+              <a href="${data.url ? data.url : ''}" target="_blank"><h2>${channelName}</h2></a>
+              <p class="item__description">${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
+              <p class="item__status-text">Status: <span class="item__status ${streamStatus == 'Online' ? 'item__status-online' : 'item__status-offline'}">${streamStatus}</span></p>
               <div>
             </li>`;
           resultList.innerHTML = resultList.innerHTML + html;

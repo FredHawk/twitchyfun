@@ -51,7 +51,7 @@ function getData (type, channel, status) {
             const html = `
               <li class="result">
                 <img src="${channelLogo}" />
-                <a href="${data.url ? data.url : ''}"><h3>${channelName}</h3></a>
+                <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
                 <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
               </li>`;
             resultList.innerHTML = resultList.innerHTML + html;

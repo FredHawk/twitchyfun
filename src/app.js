@@ -64,7 +64,7 @@ function getData (type, channel, status) {
         .then(response => response.json())
         .then(data => {
           const channelName = data.display_name ? data.display_name : channel;
-          const channelLogo = data.logo ? data.logo : channel;
+          const channelLogo = data.logo ? data.logo : 'https://unsplash.it/200/?random';
           const html = `
             <li class="result">
               <img src="${channelLogo}" />

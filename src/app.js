@@ -71,3 +71,5 @@ function getInfo(status) {
 onlineButton.addEventListener('click', () => getInfo('online'));
 offlineButton.addEventListener('click', () => getInfo('offline'));
 allButton.addEventListener('click', () => getInfo('all'));
+
+window.onload = () => getInfo('all');

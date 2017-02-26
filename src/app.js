@@ -25,7 +25,15 @@ function getData (type, channel, status) {
           fetch(chans)
           .then(response => response.json())
           .then(data => {
-            console.log('online: ', data);
+            const channelName = data.display_name ? data.display_name : channel;
+            const channelLogo = data.logo ? data.logo : channel
+            const html = `
+              <li class="result">
+                <img src="${channelLogo}" />
+                <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
+                <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
+              </li>`;
+            resultList.innerHTML = resultList.innerHTML + html;
           })
           .catch(err => console.error(err));
         }
@@ -36,7 +44,15 @@ function getData (type, channel, status) {
         fetch(chans)
         .then(response => response.json())
         .then(data => {
-            console.log('offline: ', data);
+          const channelName = data.display_name ? data.display_name : channel;
+            const channelLogo = data.logo ? data.logo : channel
+            const html = `
+              <li class="result">
+                <img src="${channelLogo}" />
+                <a href="${data.url ? data.url : ''}" target="_blank"><h3>${channelName}</h3></a>
+                <p>${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
+              </li>`;
+            resultList.innerHTML = resultList.innerHTML + html;
         })
         .catch(err => console.error(err));
         }

@@ -5,9 +5,16 @@
   --color-coolBlue: #20425C;
   --color-brightGreen: #6FF2CB;
 }
-
+html {
+  font-size: 16px;
+  @media (-webkit-min-device-pixel-ratio: 2)
+    and  (min-resolution: 192dpi) 
+    and (min-device-width: 1000px) { 
+    font-size: 24px;
+  }
+}
 body {
-  background: color(var(--color-background));
+  background: color(var(--color-background));  
 }
 h1 {
   text-transform: uppercase;
@@ -55,7 +62,7 @@ h1 {
   margin-bottom: 0.5rem;
   @media (min-width: 800px) {
     flex: 45%;
-    max-width: 400px;
+    max-width: 450px;
     margin-left: 0.5rem;
   }
 }
@@ -67,6 +74,9 @@ h1 {
   background: color(var(--color-background) blackness(20%));
 }
 
+.wrapper {
+  margin-right: 1rem;
+}
 .result img {
   max-width: 4rem;
   max-height: 4rem;

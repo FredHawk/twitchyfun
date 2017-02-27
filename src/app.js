@@ -12,6 +12,19 @@ function getURL(type, channel) {
   return `${baseURL}/${type}/${channel}`;
 }
 
+function createListItem(channelName, channelLogo, data, streamStatus) {
+  const html = `
+    <li class="result">
+      <img src="${channelLogo}" />
+      <div class="wrapper">
+      ${!data.url ? `<h2>${channelName}</h2>` : `<a href="${data.url ? data.url : ''}" target="${data.url ? '_blank' : '#'}"><h2>${channelName}</h2></a>`}
+      <p class="item__description">${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
+      <p class="item__status-text">Status: <span class="item__status ${streamStatus == 'Online' ? 'item__status-online' : 'item__status-offline'}">${streamStatus}</span></p>
+      <div>
+    </li>`;
+    return html;
+}
+
 function getData (type, channel, status) {
   // get streams data
   const streams = getURL(type, channel);
@@ -28,15 +41,7 @@ function getData (type, channel, status) {
           .then(data => {
             const channelName = data.display_name ? data.display_name : channel;
           const channelLogo = data.logo ? data.logo : 'https://unsplash.it/200/?random';
-          const html = `
-            <li class="result">
-              <img src="${channelLogo}" />
-              <div class="wrapper">
-              <a href="${data.url ? data.url : ''}" target="_blank"><h2>${channelName}</h2></a>
-              <p class="item__description">${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
-              <p class="item__status-text">Status: <span class="item__status ${streamStatus == 'Online' ? 'item__status-online' : 'item__status-offline'}">${streamStatus}</span></p>
-              <div>
-            </li>`;
+          const html = createListItem(channelName, channelLogo, data, streamStatus);
           resultList.innerHTML = resultList.innerHTML + html;
           })
           .catch(err => console.error(err));
@@ -51,15 +56,7 @@ function getData (type, channel, status) {
         .then(data => {
           const channelName = data.display_name ? data.display_name : channel;
           const channelLogo = data.logo ? data.logo : 'https://unsplash.it/200/?random';
-          const html = `
-            <li class="result">
-              <img src="${channelLogo}" />
-              <div class="wrapper">
-              <a href="${data.url ? data.url : ''}" target="_blank"><h2>${channelName}</h2></a>
-              <p class="item__description">${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
-              <p class="item__status-text">Status: <span class="item__status ${streamStatus == 'Online' ? 'item__status-online' : 'item__status-offline'}">${streamStatus}</span></p>
-              <div>
-            </li>`;
+          const html = createListItem(channelName, channelLogo, data, streamStatus);
           resultList.innerHTML = resultList.innerHTML + html;
         })
         .catch(err => console.error(err));
@@ -73,15 +70,7 @@ function getData (type, channel, status) {
         .then(data => {
           const channelName = data.display_name ? data.display_name : channel;
           const channelLogo = data.logo ? data.logo : 'https://unsplash.it/200/?random';
-          const html = `
-            <li class="result">
-              <img src="${channelLogo}" />
-              <div class="wrapper">
-              <a href="${data.url ? data.url : ''}" target="_blank"><h2>${channelName}</h2></a>
-              <p class="item__description">${data.status ? data.status == '404' ? 'Channel doesn\'t exist' : data.status : ''}</p>
-              <p class="item__status-text">Status: <span class="item__status ${streamStatus == 'Online' ? 'item__status-online' : 'item__status-offline'}">${streamStatus}</span></p>
-              <div>
-            </li>`;
+          const html = createListItem(channelName, channelLogo, data, streamStatus);
           resultList.innerHTML = resultList.innerHTML + html;
         })
         .catch(err => console.error(err));
